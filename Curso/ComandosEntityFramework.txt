@@ -1,0 +1,50 @@
+-----------------------------------------------------------
+Instala o pacote do entity framework core no projeto
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 3.1.5
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+Instala o entity framework core de forma global
+dotnet tool install --global dotnet-ef --version 3.1.5
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+Adiciona os pacotes do entity framework core no projeto
+dotnet add .\Curso\CursoEFCore.csproj package Microsoft.EntityFrameworkCore.Design --version 3.1.5
+dotnet add .\Curso\CursoEFCore.csproj package Microsoft.EntityFrameworkCore.Tools --version 3.1.5
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+Gera um arquivo SQL da migração
+dotnet ef migrations script -p .\Curso\CursoEFCore.csproj -o .\Curso\PrimeiraMigracao.sql
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+Gera um arquivo SQL Idempotente da migração
+dotnet ef migrations script -p .\Curso\CursoEFCore.csproj -o .\Curso\PrimeiraMigracao.sql -i
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+Cria uma nova migração na Base de dados
+dotnet ef migrations add AdicionarEmail -p .\Curso\CursoEFCore.csproj -v
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+Executa uma migração na Base de dados
+dotnet ef database update -p .\Curso\CursoEFCore.csproj -v
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+Reverte a migração na Base de dados
+dotnet ef database update PrimeiraMigracao -p .\Curso\CursoEFCore.csproj -v
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+Remove o arquivo da ultima migração executada
+dotnet ef migrations remove -p .\Curso\CursoEFCore.csproj
+-----------------------------------------------------------
+
+-------------------------------------------------------------------------
+Instala a geração de logs 
+dotnet add package Microsoft.Extensions.Logging.Console --version 3.1.5
+------------------------------------------------------------------------
